@@ -1,11 +1,12 @@
 import cv2
+
 import hand_module as hm
 
 cap = cv2.VideoCapture(0)
 
 # Custom settings
 detector = hm.HandDetector(
-    num_hands=2,
+    num_hands=1,
     connections=[(0,8), (4,12)]
 )
 
@@ -27,8 +28,6 @@ while True:
         hand = hands[0]
         distance = detector.find_distance(hand, 4, 8)
         print("Distance:", distance)
-        if distance>100:
-            break
 
     cv2.imshow("New Project", frame)
 
